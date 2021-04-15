@@ -1,0 +1,26 @@
+install.packages("ISLR")
+library(ISLR)
+ names(Smarket)
+dim(Smarket)
+summary(Smarket)
+head(Smarket)
+#split data
+train <- (Smarket$Year<2005)
+test <- Smarket[!train,]
+
+#logregression
+fit <- glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume , 
+           data = Smarket,family = binomial,subset = train)
+#predicting testing set
+
+prob = predict(fit,test,type = 'response')
+
+#creating confusion matrix to check accuracy
+pred = rep("down",252)
+pred[prob>.5]= "up"
+r
+#reults 
+table(pred,test$Direction)
+77+44
+121/2.52
+
